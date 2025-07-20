@@ -1,0 +1,99 @@
+site_name: ChessBot
+site_description: A Python chess bot using python-chess
+site_author: Florin Romulescu
+site_url: https://github.com/florin-romulescu/chessbot
+
+# Repository
+repo_name: florin-romulescu/chessbot
+repo_url: https://github.com/florin-romulescu/chessbot
+edit_uri: edit/main/docs/
+
+# Theme
+theme:
+  name: material
+  palette:
+    # Palette toggle for automatic mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to dark mode
+    # Palette toggle for light mode
+    - scheme: light
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to system preference
+    # Palette toggle for dark mode
+    - scheme: dark
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+# Features
+features:
+  - navigation.tabs
+  - navigation.sections
+  - navigation.expand
+  - navigation.top
+  - search.suggest
+  - search.highlight
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.smartsymbols
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - toc:
+      permalink: true
+
+# Navigation
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+    - Examples: getting-started/examples.md
+  - User Guide:
+    - Basic Usage: user-guide/basic-usage.md
+    - Playing Games: user-guide/playing-games.md
+    - Configuration: user-guide/configuration.md
+  - API Reference:
+    - ChessBot: api/chessbot.md
+    - ChessBoard: api/chessboard.md
+    - ChessEngine: api/chessengine.md
+    - Utilities: api/utils.md
+  - Development:
+    - Contributing: development/contributing.md
+    - Testing: development/testing.md
+    - Building: development/building.md
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/florin-romulescu/chessbot
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/chessbot/
+
+# Copyright
+copyright: Copyright &copy; 2024 Florin Romulescu
+
+# Plugins
+plugins:
+  - search 
