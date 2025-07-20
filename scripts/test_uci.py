@@ -5,7 +5,7 @@ import os
 import sys
 
 # Add the src directory to the Python path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
 from chessbot.uci_engine import UCIEngine
 
@@ -53,7 +53,7 @@ def test_uci_commands():
         "position startpos moves e2e4 e7e5",
         "go movetime 1000",
         "stop",
-        "quit"
+        "quit",
     ]
 
     for cmd in test_commands:

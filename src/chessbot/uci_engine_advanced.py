@@ -164,8 +164,7 @@ class AdvancedUCIEngine:
         # Start search in a separate thread
         self.search_stopped = False
         search_thread = threading.Thread(
-            target=self._search_move,
-            args=(time_controls,)
+            target=self._search_move, args=(time_controls,)
         )
         self.current_search_thread = search_thread
         search_thread.start()
@@ -181,14 +180,14 @@ class AdvancedUCIEngine:
             Dictionary with time control parameters
         """
         controls: Dict[str, Any] = {
-            'movetime': None,
-            'wtime': None,
-            'btime': None,
-            'winc': None,
-            'binc': None,
-            'depth': None,
-            'nodes': None,
-            'infinite': False
+            "movetime": None,
+            "wtime": None,
+            "btime": None,
+            "winc": None,
+            "binc": None,
+            "depth": None,
+            "nodes": None,
+            "infinite": False,
         }
 
         i = 0
@@ -197,48 +196,48 @@ class AdvancedUCIEngine:
 
             if arg == "movetime" and i + 1 < len(args):
                 try:
-                    controls['movetime'] = int(args[i + 1])
+                    controls["movetime"] = int(args[i + 1])
                 except ValueError:
                     pass
                 i += 2
             elif arg == "wtime" and i + 1 < len(args):
                 try:
-                    controls['wtime'] = int(args[i + 1])
+                    controls["wtime"] = int(args[i + 1])
                 except ValueError:
                     pass
                 i += 2
             elif arg == "btime" and i + 1 < len(args):
                 try:
-                    controls['btime'] = int(args[i + 1])
+                    controls["btime"] = int(args[i + 1])
                 except ValueError:
                     pass
                 i += 2
             elif arg == "winc" and i + 1 < len(args):
                 try:
-                    controls['winc'] = int(args[i + 1])
+                    controls["winc"] = int(args[i + 1])
                 except ValueError:
                     pass
                 i += 2
             elif arg == "binc" and i + 1 < len(args):
                 try:
-                    controls['binc'] = int(args[i + 1])
+                    controls["binc"] = int(args[i + 1])
                 except ValueError:
                     pass
                 i += 2
             elif arg == "depth" and i + 1 < len(args):
                 try:
-                    controls['depth'] = int(args[i + 1])
+                    controls["depth"] = int(args[i + 1])
                 except ValueError:
                     pass
                 i += 2
             elif arg == "nodes" and i + 1 < len(args):
                 try:
-                    controls['nodes'] = int(args[i + 1])
+                    controls["nodes"] = int(args[i + 1])
                 except ValueError:
                     pass
                 i += 2
             elif arg == "infinite":
-                controls['infinite'] = True
+                controls["infinite"] = True
                 i += 1
             else:
                 i += 1
@@ -257,12 +256,12 @@ class AdvancedUCIEngine:
         # Calculate time limit
         time_limit = self._calculate_time_limit(time_controls)
 
-        if time_controls.get('infinite'):
-            time_limit = float('inf')
+        if time_controls.get("infinite"):
+            time_limit = float("inf")
 
         # Set search depth if specified
-        if time_controls.get('depth'):
-            self.chess_engine.set_depth(time_controls['depth'])
+        if time_controls.get("depth"):
+            self.chess_engine.set_depth(time_controls["depth"])
 
         # Get the best move
         best_move = self.chess_engine.get_move_with_time_limit(self.board, time_limit)
@@ -285,16 +284,16 @@ class AdvancedUCIEngine:
             Time limit in seconds
         """
         # If movetime is specified, use it directly
-        if time_controls.get('movetime'):
-            return time_controls['movetime'] / 1000.0
+        if time_controls.get("movetime"):
+            return time_controls["movetime"] / 1000.0
 
         # Calculate based on remaining time
-        if self.board.turn == "w" and time_controls.get('wtime'):
-            base_time = time_controls['wtime'] / 1000.0
-            increment = time_controls.get('winc', 0) / 1000.0
-        elif self.board.turn == "b" and time_controls.get('btime'):
-            base_time = time_controls['btime'] / 1000.0
-            increment = time_controls.get('binc', 0) / 1000.0
+        if self.board.turn == "w" and time_controls.get("wtime"):
+            base_time = time_controls["wtime"] / 1000.0
+            increment = time_controls.get("winc", 0) / 1000.0
+        elif self.board.turn == "b" and time_controls.get("btime"):
+            base_time = time_controls["btime"] / 1000.0
+            increment = time_controls.get("binc", 0) / 1000.0
         else:
             return 5.0  # Default 5 seconds
 
