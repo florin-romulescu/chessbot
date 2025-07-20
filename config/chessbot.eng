@@ -1,0 +1,14 @@
+## ChessBot Engine Configuration for XBoard
+## Place this file in your XBoard engines directory
+
+[ENGINE]
+Name=ChessBot
+Command=python3 /path/to/your/chessbot/scripts/run_uci_engine.py
+Protocol=uci
+Dir=/path/to/your/chessbot
+Option="Depth (1-10) 3"
+Option="Debug (check) false"
+
+[OPTIONS]
+Depth=3
+Debug=false 

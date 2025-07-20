@@ -18,6 +18,8 @@ pip install -e ".[dev]"
 
 ## Usage
 
+### Command Line Interface
+
 ```bash
 # Run the chess bot
 python -m chessbot.main
@@ -25,6 +27,22 @@ python -m chessbot.main
 # Or use the installed script
 chessbot
 ```
+
+### UCI Engine (XBoard, Arena, etc.)
+
+```bash
+# Run as UCI engine
+uv run chessbot-uci
+
+# Run advanced UCI engine with better time management
+uv run chessbot-uci-advanced
+
+# Or run directly
+python -m chessbot.uci_engine
+python -m chessbot.uci_engine_advanced
+```
+
+See the [UCI Integration Guide](docs/getting-started/uci-integration.md) for detailed setup instructions.
 
 ## Development
 

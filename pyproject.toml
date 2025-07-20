@@ -46,6 +46,8 @@ Issues = "https://github.com/yourusername/chessbot/issues"
 
 [project.scripts]
 chessbot = "chessbot.main:main"
+chessbot-uci = "chessbot.uci_engine:main"
+chessbot-uci-advanced = "chessbot.uci_engine_advanced:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/chessbot"]

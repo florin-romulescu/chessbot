@@ -62,6 +62,7 @@ nav:
     - Installation: getting-started/installation.md
     - Quick Start: getting-started/quickstart.md
     - Examples: getting-started/examples.md
+    - UCI Integration: getting-started/uci-integration.md
   - User Guide:
     - Basic Usage: user-guide/basic-usage.md
     - Playing Games: user-guide/playing-games.md
