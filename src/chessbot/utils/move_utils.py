@@ -164,7 +164,7 @@ def get_move_type(board: chess.Board, move_uci: str) -> str:
             move_types.append("castling")
         elif board.is_en_passant(move):
             move_types.append("en_passant")
-        elif board.is_promotion(move):
+        elif move.promotion:
             move_types.append("promotion")
     except ValueError:
         pass

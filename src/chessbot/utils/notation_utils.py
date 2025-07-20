@@ -180,7 +180,7 @@ def get_move_description(board: chess.Board, move_uci: str) -> str:
             description += " (castling)"
         elif board.is_en_passant(move):
             description += " (en passant)"
-        elif board.is_promotion(move):
+        elif move.promotion:
             description += f" (promotes to {get_piece_name(chess.Piece(move.promotion, board.turn))})"
 
         return description

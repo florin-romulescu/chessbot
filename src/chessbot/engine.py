@@ -104,8 +104,13 @@ class ChessEngine:
         return score
 
     def minimax(
-        self, board: chess.Board, depth: int, alpha: int, beta: int, maximizing: bool
-    ) -> Tuple[int, Optional[chess.Move]]:
+        self,
+        board: chess.Board,
+        depth: int,
+        alpha: float,
+        beta: float,
+        maximizing: bool,
+    ) -> Tuple[float, Optional[chess.Move]]:
         """
         Minimax algorithm with alpha-beta pruning.
 

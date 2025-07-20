@@ -91,14 +91,14 @@ class ChessBot:
                     break
 
             # Check for game end conditions
-            if self.board.is_checkmate():
+            if self.board.is_checkmate:
                 winner = "Black" if self.board.turn == "w" else "White"
                 print(f"\nCheckmate! {winner} wins!")
                 self.game_over = True
-            elif self.board.is_stalemate():
+            elif self.board.is_stalemate:
                 print("\nStalemate! The game is a draw.")
                 self.game_over = True
-            elif self.board.is_insufficient_material():
+            elif self.board.is_insufficient_material:
                 print("\nInsufficient material! The game is a draw.")
                 self.game_over = True
 
