@@ -3,7 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
+# XBoard
+config/
+
+# C
 *.so
 
 # Distribution / packaging
@@ -182,5 +185,3 @@ game_logs/
 
 # Cursor 
 .cursor/
-
-*.eng
