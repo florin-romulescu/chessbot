@@ -182,3 +182,5 @@ game_logs/
 
 # Cursor 
 .cursor/
+
+*.eng
