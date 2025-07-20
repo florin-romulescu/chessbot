@@ -1,0 +1,26 @@
+name: Quick Check
+
+on:
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  quick-check:
+    name: Quick Check
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+
+    - name: Install dependencies
+      run: uv sync --all-extras --dev
+
+    - name: Run linting
+      run: uv run ruff check .
+
+    - name: Run tests
+      run: uv run pytest --tb=short 

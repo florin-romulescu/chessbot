@@ -1,0 +1,117 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    name: Test and Lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: .venv
+        key: deps-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}
+        restore-keys: |
+          deps-${{ runner.os }}-${{ matrix.python-version }}-
+
+    - name: Install dependencies
+      run: uv sync --all-extras --dev
+
+    - name: Run linting
+      run: uv run ruff check .
+
+    - name: Run formatting check
+      run: uv run ruff format --check .
+
+    - name: Run type checking
+      run: uv run mypy src/
+
+    - name: Run tests
+      run: uv run pytest --cov=src/chessbot --cov-report=xml
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+
+  docs:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: .venv
+        key: deps-docs-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
+        restore-keys: |
+          deps-docs-${{ runner.os }}-
+
+    - name: Install dependencies
+      run: uv sync --all-extras --dev
+
+    - name: Build documentation
+      run: uv run mkdocs build
+
+    - name: Upload documentation artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: documentation
+        path: site/
+        retention-days: 30
+
+  deploy-docs:
+    name: Deploy Documentation
+    runs-on: ubuntu-latest
+    needs: docs
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: .venv
+        key: deps-deploy-${{ runner.os }}-${{ hashFiles('pyproject.toml') }}
+        restore-keys: |
+          deps-deploy-${{ runner.os }}-
+
+    - name: Install dependencies
+      run: uv sync --all-extras --dev
+
+    - name: Deploy to GitHub Pages
+      run: uv run mkdocs gh-deploy --force
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
