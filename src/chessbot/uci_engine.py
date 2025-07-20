@@ -18,7 +18,9 @@ class UCIEngine:
     other UCI-compatible chess GUIs.
     """
 
-    def __init__(self, engine_type: EngineType = EngineType.MINIMAX, debug: bool = False):
+    def __init__(
+        self, engine_type: EngineType = EngineType.MINIMAX, debug: bool = False
+    ):
         """
         Initialize the UCI engine.
 
