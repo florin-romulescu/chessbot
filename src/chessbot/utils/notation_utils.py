@@ -8,10 +8,10 @@ import chess
 def square_to_coordinates(square: str) -> Tuple[int, int]:
     """
     Convert a chess square to coordinates.
-    
+
     Args:
         square: Square in algebraic notation (e.g., 'e4')
-        
+
     Returns:
         Tuple of (file, rank) coordinates (0-7, 0-7)
     """
@@ -19,17 +19,17 @@ def square_to_coordinates(square: str) -> Tuple[int, int]:
         chess_square = chess.parse_square(square)
         return chess.square_file(chess_square), chess.square_rank(chess_square)
     except ValueError:
-        raise ValueError(f"Invalid square: {square}")
+        raise ValueError(f"Invalid square: {square}") from None
 
 
 def coordinates_to_square(file: int, rank: int) -> str:
     """
     Convert coordinates to a chess square.
-    
+
     Args:
         file: File coordinate (0-7, a-h)
         rank: Rank coordinate (0-7, 1-8)
-        
+
     Returns:
         Square in algebraic notation
     """
@@ -43,11 +43,11 @@ def coordinates_to_square(file: int, rank: int) -> str:
 def uci_to_san_move(board: chess.Board, uci_move: str) -> Optional[str]:
     """
     Convert a UCI move to SAN notation.
-    
+
     Args:
         board: Chess board
         uci_move: Move in UCI format
-        
+
     Returns:
         Move in SAN format, or None if invalid
     """
@@ -61,11 +61,11 @@ def uci_to_san_move(board: chess.Board, uci_move: str) -> Optional[str]:
 def san_to_uci_move(board: chess.Board, san_move: str) -> Optional[str]:
     """
     Convert a SAN move to UCI format.
-    
+
     Args:
         board: Chess board
         san_move: Move in SAN format
-        
+
     Returns:
         Move in UCI format, or None if invalid
     """
@@ -79,10 +79,10 @@ def san_to_uci_move(board: chess.Board, san_move: str) -> Optional[str]:
 def get_piece_symbol(piece: chess.Piece) -> str:
     """
     Get the symbol for a chess piece.
-    
+
     Args:
         piece: Chess piece
-        
+
     Returns:
         Piece symbol (P, N, B, R, Q, K for white; p, n, b, r, q, k for black)
     """
@@ -92,10 +92,10 @@ def get_piece_symbol(piece: chess.Piece) -> str:
 def get_piece_name(piece: chess.Piece) -> str:
     """
     Get the full name of a chess piece.
-    
+
     Args:
         piece: Chess piece
-        
+
     Returns:
         Piece name (pawn, knight, bishop, rook, queen, king)
     """
@@ -113,10 +113,10 @@ def get_piece_name(piece: chess.Piece) -> str:
 def get_color_name(color: bool) -> str:
     """
     Get the name of a chess color.
-    
+
     Args:
         color: Chess color (True for white, False for black)
-        
+
     Returns:
         Color name ("white" or "black")
     """
@@ -126,10 +126,10 @@ def get_color_name(color: bool) -> str:
 def format_fen(board: chess.Board) -> str:
     """
     Get a formatted FEN string for the board.
-    
+
     Args:
         board: Chess board
-        
+
     Returns:
         Formatted FEN string
     """
@@ -139,10 +139,10 @@ def format_fen(board: chess.Board) -> str:
 def parse_fen(fen: str) -> Optional[chess.Board]:
     """
     Parse a FEN string and create a board.
-    
+
     Args:
         fen: FEN string
-        
+
     Returns:
         Chess board, or None if FEN is invalid
     """
@@ -155,11 +155,11 @@ def parse_fen(fen: str) -> Optional[chess.Board]:
 def get_move_description(board: chess.Board, move_uci: str) -> str:
     """
     Get a human-readable description of a move.
-    
+
     Args:
         board: Chess board
         move_uci: Move in UCI format
-        
+
     Returns:
         Human-readable move description
     """
@@ -168,7 +168,7 @@ def get_move_description(board: chess.Board, move_uci: str) -> str:
         san = board.san(move)
 
         # Get piece information
-        from_piece = board.piece_at(move.from_square)
+        board.piece_at(move.from_square)
         to_piece = board.piece_at(move.to_square)
 
         description = f"{san}"
@@ -191,11 +191,11 @@ def get_move_description(board: chess.Board, move_uci: str) -> str:
 def get_board_visualization(board: chess.Board, show_coordinates: bool = True) -> str:
     """
     Get a visual representation of the board.
-    
+
     Args:
         board: Chess board
         show_coordinates: Whether to show file and rank coordinates
-        
+
     Returns:
         Visual board representation
     """

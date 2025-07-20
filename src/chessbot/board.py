@@ -8,7 +8,7 @@ import chess
 class ChessBoard:
     """
     Chess board representation using the python-chess library.
-    
+
     This class provides a high-level interface for managing chess game state,
     including move validation, board visualization, and game end detection.
     """
@@ -16,7 +16,7 @@ class ChessBoard:
     def __init__(self, fen: str = chess.STARTING_FEN):
         """
         Initialize the chess board.
-        
+
         Args:
             fen: FEN string representing the initial board position
         """
@@ -26,7 +26,7 @@ class ChessBoard:
     def turn(self) -> str:
         """
         Get the current player's turn.
-        
+
         Returns:
             'w' for white's turn, 'b' for black's turn
         """
@@ -36,7 +36,7 @@ class ChessBoard:
     def is_check(self) -> bool:
         """
         Check if the current player is in check.
-        
+
         Returns:
             True if the current player is in check
         """
@@ -46,7 +46,7 @@ class ChessBoard:
     def is_checkmate(self) -> bool:
         """
         Check if the current player is checkmated.
-        
+
         Returns:
             True if the current player is checkmated
         """
@@ -56,7 +56,7 @@ class ChessBoard:
     def is_stalemate(self) -> bool:
         """
         Check if the current position is a stalemate.
-        
+
         Returns:
             True if the position is a stalemate
         """
@@ -66,7 +66,7 @@ class ChessBoard:
     def is_insufficient_material(self) -> bool:
         """
         Check if there is insufficient material for checkmate.
-        
+
         Returns:
             True if there is insufficient material
         """
@@ -76,7 +76,7 @@ class ChessBoard:
     def legal_moves(self) -> List[str]:
         """
         Get all legal moves in UCI format.
-        
+
         Returns:
             List of legal moves as UCI strings
         """
@@ -85,10 +85,10 @@ class ChessBoard:
     def is_valid_move(self, move_uci: str) -> bool:
         """
         Check if a move is legal.
-        
+
         Args:
             move_uci: Move in UCI format
-            
+
         Returns:
             True if the move is legal
         """
@@ -101,10 +101,10 @@ class ChessBoard:
     def make_move(self, move_uci: str) -> bool:
         """
         Make a move on the board.
-        
+
         Args:
             move_uci: Move in UCI format
-            
+
         Returns:
             True if the move was successfully made
         """
@@ -123,7 +123,7 @@ class ChessBoard:
     def get_fen(self) -> str:
         """
         Get the current board position in FEN format.
-        
+
         Returns:
             FEN string representing the current position
         """
@@ -132,10 +132,10 @@ class ChessBoard:
     def set_fen(self, fen: str) -> bool:
         """
         Set the board position from a FEN string.
-        
+
         Args:
             fen: FEN string representing the desired position
-            
+
         Returns:
             True if the FEN was valid and set successfully
         """
@@ -148,10 +148,10 @@ class ChessBoard:
     def get_piece_at(self, square: str) -> Optional[str]:
         """
         Get the piece at a given square.
-        
+
         Args:
             square: Square in algebraic notation (e.g., 'e4')
-            
+
         Returns:
             Piece symbol or None if square is empty
         """
@@ -167,7 +167,7 @@ class ChessBoard:
     def __str__(self) -> str:
         """
         Get a string representation of the board.
-        
+
         Returns:
             ASCII representation of the chess board
         """

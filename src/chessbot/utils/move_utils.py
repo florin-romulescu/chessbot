@@ -8,11 +8,11 @@ import chess
 def is_legal_move(board: chess.Board, move_uci: str) -> bool:
     """
     Check if a move is legal on the given board.
-    
+
     Args:
         board: Chess board to check the move on
         move_uci: Move in UCI format
-        
+
     Returns:
         True if the move is legal
     """
@@ -26,11 +26,11 @@ def is_legal_move(board: chess.Board, move_uci: str) -> bool:
 def get_move_san(board: chess.Board, move_uci: str) -> Optional[str]:
     """
     Convert a UCI move to Standard Algebraic Notation (SAN).
-    
+
     Args:
         board: Chess board
         move_uci: Move in UCI format
-        
+
     Returns:
         Move in SAN format, or None if invalid
     """
@@ -44,11 +44,11 @@ def get_move_san(board: chess.Board, move_uci: str) -> Optional[str]:
 def get_move_uci(board: chess.Board, move_san: str) -> Optional[str]:
     """
     Convert a SAN move to UCI format.
-    
+
     Args:
         board: Chess board
         move_san: Move in SAN format
-        
+
     Returns:
         Move in UCI format, or None if invalid
     """
@@ -62,11 +62,11 @@ def get_move_uci(board: chess.Board, move_san: str) -> Optional[str]:
 def get_captured_piece(board: chess.Board, move_uci: str) -> Optional[chess.Piece]:
     """
     Get the piece that would be captured by a move.
-    
+
     Args:
         board: Chess board
         move_uci: Move in UCI format
-        
+
     Returns:
         Captured piece, or None if no piece is captured
     """
@@ -80,11 +80,11 @@ def get_captured_piece(board: chess.Board, move_uci: str) -> Optional[chess.Piec
 def is_capture_move(board: chess.Board, move_uci: str) -> bool:
     """
     Check if a move is a capture move.
-    
+
     Args:
         board: Chess board
         move_uci: Move in UCI format
-        
+
     Returns:
         True if the move captures a piece
     """
@@ -94,11 +94,11 @@ def is_capture_move(board: chess.Board, move_uci: str) -> bool:
 def is_check_move(board: chess.Board, move_uci: str) -> bool:
     """
     Check if a move gives check.
-    
+
     Args:
         board: Chess board
         move_uci: Move in UCI format
-        
+
     Returns:
         True if the move gives check
     """
@@ -115,11 +115,11 @@ def is_check_move(board: chess.Board, move_uci: str) -> bool:
 def is_checkmate_move(board: chess.Board, move_uci: str) -> bool:
     """
     Check if a move gives checkmate.
-    
+
     Args:
         board: Chess board
         move_uci: Move in UCI format
-        
+
     Returns:
         True if the move gives checkmate
     """
@@ -136,11 +136,11 @@ def is_checkmate_move(board: chess.Board, move_uci: str) -> bool:
 def get_move_type(board: chess.Board, move_uci: str) -> str:
     """
     Get the type of a move (normal, capture, check, checkmate, etc.).
-    
+
     Args:
         board: Chess board
         move_uci: Move in UCI format
-        
+
     Returns:
         String describing the move type
     """
@@ -175,10 +175,10 @@ def get_move_type(board: chess.Board, move_uci: str) -> str:
 def get_all_capture_moves(board: chess.Board) -> List[str]:
     """
     Get all capture moves for the current position.
-    
+
     Args:
         board: Chess board
-        
+
     Returns:
         List of capture moves in UCI format
     """
@@ -189,10 +189,10 @@ def get_all_capture_moves(board: chess.Board) -> List[str]:
 def get_all_check_moves(board: chess.Board) -> List[str]:
     """
     Get all moves that give check.
-    
+
     Args:
         board: Chess board
-        
+
     Returns:
         List of check moves in UCI format
     """

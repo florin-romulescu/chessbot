@@ -10,7 +10,7 @@ import chess.engine
 class ChessEngine:
     """
     Chess engine that evaluates positions and selects the best moves.
-    
+
     This engine implements basic chess AI algorithms including minimax
     with alpha-beta pruning and position evaluation.
     """
@@ -28,7 +28,7 @@ class ChessEngine:
     def __init__(self, depth: int = 3):
         """
         Initialize the chess engine.
-        
+
         Args:
             depth: Search depth for the minimax algorithm
         """
@@ -37,13 +37,13 @@ class ChessEngine:
     def evaluate_position(self, board: chess.Board) -> int:
         """
         Evaluate a chess position.
-        
+
         This is a simple material-based evaluation. Positive values
         favor white, negative values favor black.
-        
+
         Args:
             board: Chess board to evaluate
-            
+
         Returns:
             Position evaluation score
         """
@@ -74,10 +74,10 @@ class ChessEngine:
     def _evaluate_positional_factors(self, board: chess.Board) -> int:
         """
         Evaluate positional factors like piece mobility and king safety.
-        
+
         Args:
             board: Chess board to evaluate
-            
+
         Returns:
             Positional evaluation score
         """
@@ -107,14 +107,14 @@ class ChessEngine:
                 maximizing: bool) -> Tuple[int, Optional[chess.Move]]:
         """
         Minimax algorithm with alpha-beta pruning.
-        
+
         Args:
             board: Current chess board
             depth: Remaining search depth
             alpha: Alpha value for pruning
             beta: Beta value for pruning
             maximizing: True if maximizing player's turn
-            
+
         Returns:
             Tuple of (evaluation, best_move)
         """
@@ -157,10 +157,10 @@ class ChessEngine:
     def get_best_move(self, board) -> Optional[str]:
         """
         Get the best move for the current position.
-        
+
         Args:
             board: ChessBoard instance representing the current position
-            
+
         Returns:
             Best move in UCI format, or None if no moves available
         """
@@ -192,11 +192,11 @@ class ChessEngine:
     def get_move_with_time_limit(self, board, time_limit: float = 5.0) -> Optional[str]:
         """
         Get the best move within a time limit.
-        
+
         Args:
             board: ChessBoard instance representing the current position
             time_limit: Maximum time to spend thinking in seconds
-            
+
         Returns:
             Best move in UCI format, or None if no moves available
         """
@@ -207,7 +207,7 @@ class ChessEngine:
     def set_depth(self, depth: int) -> None:
         """
         Set the search depth for the engine.
-        
+
         Args:
             depth: New search depth
         """

@@ -10,7 +10,7 @@ from .engine import ChessEngine
 class ChessBot:
     """
     Main chess bot class that orchestrates the game.
-    
+
     This class manages the chess game state, handles moves, and coordinates
     between the board representation and the chess engine.
     """
@@ -18,7 +18,7 @@ class ChessBot:
     def __init__(self, engine_depth: int = 3):
         """
         Initialize the chess bot.
-        
+
         Args:
             engine_depth: The search depth for the chess engine
         """
@@ -29,10 +29,10 @@ class ChessBot:
     def make_move(self, move_uci: str) -> bool:
         """
         Make a move on the chess board.
-        
+
         Args:
             move_uci: Move in UCI format (e.g., 'e2e4')
-            
+
         Returns:
             True if the move was legal and executed, False otherwise
         """
@@ -47,7 +47,7 @@ class ChessBot:
     def get_best_move(self) -> Optional[str]:
         """
         Get the best move from the chess engine.
-        
+
         Returns:
             The best move in UCI format, or None if no move is available
         """
@@ -59,7 +59,7 @@ class ChessBot:
     def play_game(self) -> None:
         """
         Play a complete chess game against the engine.
-        
+
         This method runs an interactive chess game where the user
         plays against the chess engine.
         """

@@ -1,6 +1,6 @@
 """Utility functions for the chess bot."""
 
-from .move_utils import *
-from .notation_utils import *
+import move_utils
+import notation_utils
 
 __all__ = ["move_utils", "notation_utils"]
