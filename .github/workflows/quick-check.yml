@@ -1,8 +1,20 @@
 name: Quick Check
 
 on:
+  # Run on pull requests to main/master
   pull_request:
     branches: [ main, master ]
+  
+  # Run on pushes to main/master (for direct commits)
+  push:
+    branches: [ main, master ]
+  
+  # Allow manual triggering
+  workflow_dispatch:
+  
+  # Run daily at 2 AM UTC for regular health checks
+  schedule:
+    - cron: '0 2 * * *'
 
 jobs:
   quick-check:
