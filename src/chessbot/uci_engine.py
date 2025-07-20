@@ -2,9 +2,11 @@
 
 import sys
 import time
+from argparse import ArgumentParser
 
 from .board import ChessBoard
-from .engine import ChessEngine
+from .engine import EngineFactory, EngineType
+from .utils.logger import get_chess_logger
 
 
 class UCIEngine:
@@ -16,17 +18,19 @@ class UCIEngine:
     other UCI-compatible chess GUIs.
     """
 
-    def __init__(self, engine_depth: int = 3):
+    def __init__(self, engine_type: EngineType = EngineType.MINIMAX, debug: bool = False):
         """
         Initialize the UCI engine.
 
         Args:
             engine_depth: Search depth for the chess engine
         """
-        self.chess_engine = ChessEngine(depth=engine_depth)
+        self.engine_type = engine_type
+        self.chess_engine = EngineFactory.get_engine(engine_type=engine_type)
         self.board = ChessBoard()
         self.running = False
-        self.debug = False
+        self.debug = debug
+        self.logger = get_chess_logger()
 
     def run(self) -> None:
         """Run the UCI engine, listening for commands from stdin."""
@@ -52,7 +56,7 @@ class UCIEngine:
             command: The UCI command to handle
         """
         if self.debug:
-            print(f"info string Received command: {command}", file=sys.stderr)
+            self.logger.log_info(f"Received command: {command}")
 
         parts = command.split()
         if not parts:
@@ -206,7 +210,12 @@ class UCIEngine:
 
 def main() -> None:
     """Main entry point for the UCI engine."""
-    engine = UCIEngine()
+    parser = ArgumentParser()
+    parser.add_argument("--engine-type", type=EngineType, default=EngineType.MINIMAX)
+    parser.add_argument("--debug", action="store_true")
+    args = parser.parse_args()
+
+    engine = UCIEngine(engine_type=args.engine_type, debug=args.debug)
     engine.run()
 
 

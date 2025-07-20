@@ -2,12 +2,11 @@
 
 import random
 from typing import Optional, Tuple
-
 import chess
-import chess.engine
+from .engine import ChessEngine
 
 
-class ChessEngine:
+class MinimaxEngine(ChessEngine):   
     """
     Chess engine that evaluates positions and selects the best moves.
 
@@ -214,3 +213,12 @@ class ChessEngine:
             depth: New search depth
         """
         self.depth = max(1, depth)  # Ensure depth is at least 1
+        
+    def get_move(self, board: chess.Board, time_limit: Optional[float] = None) -> Optional[str]:
+        """
+        Get the best move for the current position.
+
+        Args:
+            board: ChessBoard instance representing the current position
+        """
+        return self.get_best_move(board)
