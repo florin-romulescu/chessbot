@@ -105,7 +105,7 @@ def get_piece_name(piece: chess.Piece) -> str:
         chess.BISHOP: "bishop",
         chess.ROOK: "rook",
         chess.QUEEN: "queen",
-        chess.KING: "king"
+        chess.KING: "king",
     }
     return piece_names[piece.piece_type]
 
@@ -206,12 +206,12 @@ def get_board_visualization(board: chess.Board, show_coordinates: bool = True) -
         board_str += "\n  a b c d e f g h"
 
         # Add rank coordinates on the left
-        lines = board_str.split('\n')
+        lines = board_str.split("\n")
         numbered_lines = []
         for i, line in enumerate(lines[:-1]):  # Skip the last line (file coordinates)
             rank = 8 - i
             numbered_lines.append(f"{rank} {line}")
 
-        board_str = '\n'.join(numbered_lines)
+        board_str = "\n".join(numbered_lines)
 
     return board_str

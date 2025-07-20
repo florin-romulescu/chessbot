@@ -182,8 +182,7 @@ def get_all_capture_moves(board: chess.Board) -> List[str]:
     Returns:
         List of capture moves in UCI format
     """
-    return [move.uci() for move in board.legal_moves
-            if board.is_capture(move)]
+    return [move.uci() for move in board.legal_moves if board.is_capture(move)]
 
 
 def get_all_check_moves(board: chess.Board) -> List[str]:

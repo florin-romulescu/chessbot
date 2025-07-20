@@ -71,9 +71,9 @@ class ChessBot:
             print(f"\n{self.board}")
 
             # Player's turn
-            if self.board.turn == 'w':
+            if self.board.turn == "w":
                 move = input("Your move: ").strip()
-                if move.lower() == 'quit':
+                if move.lower() == "quit":
                     break
 
                 if not self.make_move(move):
@@ -92,7 +92,7 @@ class ChessBot:
 
             # Check for game end conditions
             if self.board.is_checkmate():
-                winner = "Black" if self.board.turn == 'w' else "White"
+                winner = "Black" if self.board.turn == "w" else "White"
                 print(f"\nCheckmate! {winner} wins!")
                 self.game_over = True
             elif self.board.is_stalemate():

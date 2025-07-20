@@ -41,7 +41,9 @@ class TestChessEngine:
         engine = ChessEngine()
 
         # Fool's mate position
-        board = chess.Board("rnb1kbnr/pppp1ppp/8/4p3/6Pq/5P2/PPPPP2P/RNBQKBNR w KQkq - 1 3")
+        board = chess.Board(
+            "rnb1kbnr/pppp1ppp/8/4p3/6Pq/5P2/PPPPP2P/RNBQKBNR w KQkq - 1 3"
+        )
         evaluation = engine.evaluate_position(board)
 
         # Should heavily favor black (negative score)
@@ -56,7 +58,9 @@ class TestChessEngine:
         evaluation = engine.evaluate_position(board)
 
         # Should favor white (positive score)
-        assert evaluation > 300  # Queen value is 900, but positional factors may reduce it
+        assert (
+            evaluation > 300
+        )  # Queen value is 900, but positional factors may reduce it
 
     def test_minimax_basic(self):
         """Test basic minimax functionality."""
@@ -65,7 +69,7 @@ class TestChessEngine:
 
         # Test minimax on starting position
         evaluation, best_move = engine.minimax(
-            board, 2, float('-inf'), float('inf'), True
+            board, 2, float("-inf"), float("inf"), True
         )
 
         assert best_move is not None
@@ -86,8 +90,10 @@ class TestChessEngine:
         engine = ChessEngine()
 
         # Set up checkmate position
-        board = ChessBoard("rnb1kbnr/pppp1ppp/8/4p3/6Pq/5P2/PPPPP2P/RNBQKBNR w KQkq - 1 3")
-        board.make_move('f1c4')  # Make the checkmate move
+        board = ChessBoard(
+            "rnb1kbnr/pppp1ppp/8/4p3/6Pq/5P2/PPPPP2P/RNBQKBNR w KQkq - 1 3"
+        )
+        board.make_move("f1c4")  # Make the checkmate move
 
         best_move = engine.get_best_move(board)
         assert best_move is None  # No moves available in checkmate

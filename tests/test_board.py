@@ -12,7 +12,7 @@ class TestChessBoard:
         """Test board initialization with default FEN."""
         board = ChessBoard()
         assert board.get_fen() == chess.STARTING_FEN
-        assert board.turn == 'w'
+        assert board.turn == "w"
 
     def test_initialization_with_custom_fen(self):
         """Test board initialization with custom FEN."""
@@ -23,42 +23,42 @@ class TestChessBoard:
     def test_turn_property(self):
         """Test the turn property."""
         board = ChessBoard()
-        assert board.turn == 'w'
+        assert board.turn == "w"
 
         # Make a move to change turn
-        board.make_move('e2e4')
-        assert board.turn == 'b'
+        board.make_move("e2e4")
+        assert board.turn == "b"
 
     def test_legal_moves(self):
         """Test getting legal moves."""
         board = ChessBoard()
         legal_moves = board.legal_moves
         assert len(legal_moves) == 20  # Starting position has 20 legal moves
-        assert 'e2e4' in legal_moves
-        assert 'd2d4' in legal_moves
+        assert "e2e4" in legal_moves
+        assert "d2d4" in legal_moves
 
     def test_valid_move(self):
         """Test move validation."""
         board = ChessBoard()
-        assert board.is_valid_move('e2e4') is True
-        assert board.is_valid_move('e2e5') is False  # Invalid move
-        assert board.is_valid_move('invalid') is False
+        assert board.is_valid_move("e2e4") is True
+        assert board.is_valid_move("e2e5") is False  # Invalid move
+        assert board.is_valid_move("invalid") is False
 
     def test_make_move(self):
         """Test making moves."""
         board = ChessBoard()
-        assert board.make_move('e2e4') is True
+        assert board.make_move("e2e4") is True
         assert board.get_fen() != chess.STARTING_FEN
 
         # Test invalid move
-        assert board.make_move('e2e5') is False
+        assert board.make_move("e2e5") is False
 
     def test_undo_move(self):
         """Test undoing moves."""
         board = ChessBoard()
         original_fen = board.get_fen()
 
-        board.make_move('e2e4')
+        board.make_move("e2e4")
         assert board.get_fen() != original_fen
 
         board.undo_move()
@@ -88,9 +88,9 @@ class TestChessBoard:
         board = ChessBoard()
 
         # Test pieces at starting position
-        assert board.get_piece_at('e1') == 'K'  # White king
-        assert board.get_piece_at('e8') == 'k'  # Black king
-        assert board.get_piece_at('e4') is None  # Empty square
+        assert board.get_piece_at("e1") == "K"  # White king
+        assert board.get_piece_at("e8") == "k"  # Black king
+        assert board.get_piece_at("e4") is None  # Empty square
 
     def test_set_fen(self):
         """Test setting board from FEN."""
@@ -109,10 +109,10 @@ class TestChessBoard:
         board_str = str(board)
 
         # Should contain the board representation
-        assert 'r' in board_str  # Black rook
-        assert 'R' in board_str  # White rook
-        assert 'k' in board_str  # Black king
-        assert 'K' in board_str  # White king
+        assert "r" in board_str  # Black rook
+        assert "R" in board_str  # White rook
+        assert "k" in board_str  # Black king
+        assert "K" in board_str  # White king
 
     def test_repr(self):
         """Test representation for debugging."""

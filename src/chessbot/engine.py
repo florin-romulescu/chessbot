@@ -103,8 +103,9 @@ class ChessEngine:
 
         return score
 
-    def minimax(self, board: chess.Board, depth: int, alpha: int, beta: int,
-                maximizing: bool) -> Tuple[int, Optional[chess.Move]]:
+    def minimax(
+        self, board: chess.Board, depth: int, alpha: int, beta: int, maximizing: bool
+    ) -> Tuple[int, Optional[chess.Move]]:
         """
         Minimax algorithm with alpha-beta pruning.
 
@@ -124,7 +125,7 @@ class ChessEngine:
         best_move = None
 
         if maximizing:
-            max_eval = float('-inf')
+            max_eval = float("-inf")
             for move in board.legal_moves:
                 board.push(move)
                 eval_score, _ = self.minimax(board, depth - 1, alpha, beta, False)
@@ -139,7 +140,7 @@ class ChessEngine:
                     break
             return max_eval, best_move
         else:
-            min_eval = float('inf')
+            min_eval = float("inf")
             for move in board.legal_moves:
                 board.push(move)
                 eval_score, _ = self.minimax(board, depth - 1, alpha, beta, True)
@@ -172,11 +173,7 @@ class ChessEngine:
 
         # Use minimax to find the best move
         _, best_move = self.minimax(
-            chess_board,
-            self.depth,
-            float('-inf'),
-            float('inf'),
-            chess_board.turn
+            chess_board, self.depth, float("-inf"), float("inf"), chess_board.turn
         )
 
         if best_move is not None:

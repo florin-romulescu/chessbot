@@ -30,7 +30,7 @@ class ChessBoard:
         Returns:
             'w' for white's turn, 'b' for black's turn
         """
-        return 'w' if self._board.turn else 'b'
+        return "w" if self._board.turn else "b"
 
     @property
     def is_check(self) -> bool:
