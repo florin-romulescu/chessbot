@@ -50,6 +50,16 @@ This project uses GitHub Actions for continuous integration:
 - **Quick Check**: Fast feedback on pull requests with essential checks
 - **Documentation**: Automatic deployment to GitHub Pages on main branch
 
+### Setting up GitHub Pages
+
+To enable automatic documentation deployment:
+
+1. Go to your repository Settings → Pages
+2. Set Source to "GitHub Actions"
+3. The documentation will be automatically deployed when you push to the main branch
+
+The documentation will be available at: `https://yourusername.github.io/chessbot/`
+
 ### Local Development
 
 ```bash

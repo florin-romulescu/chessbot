@@ -34,14 +34,7 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
-# Features
-features:
-  - navigation.tabs
-  - navigation.sections
-  - navigation.expand
-  - navigation.top
-  - search.suggest
-  - search.highlight
+# Features are configured in the theme section above
 
 # Extensions
 markdown_extensions:
