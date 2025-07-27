@@ -1,6 +1,5 @@
 """Tests for the EngineFactory and EngineType."""
 
-import chess
 import pytest
 
 from chessbot.board import ChessBoard
@@ -54,15 +53,14 @@ class TestEngineFactory:
     def test_engine_functionality(self):
         """Test that the factory returns a functional engine."""
         engine = EngineFactory.get_engine(EngineType.MINIMAX)
-        board = chess.Board()
+        board = ChessBoard()
 
         # Test that the engine can evaluate positions
-        evaluation = engine.evaluate_position(board)
+        evaluation = engine.evaluate(board)
         assert isinstance(evaluation, int)
 
         # Test that the engine can get moves
-        chess_board = ChessBoard()
-        move = engine.get_move(chess_board)
+        move = engine.get_move(board)
         assert move is None or (isinstance(move, str) and len(move) == 4)
 
     def test_engine_depth_setting(self):

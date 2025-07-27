@@ -163,23 +163,23 @@ class ChessBoard:
             return piece.symbol()
         except ValueError:
             return None
-        
+
     @property
     def pieces(self) -> List[chess.Piece]:
         """
         Get all pieces on the board.
-        
+
         Returns:
             List of chess.Piece objects representing all pieces on the board
         """
         piece_map = self._board.piece_map()
         return list(piece_map.values())
-    
+
     @property
     def pieces_with_positions(self) -> dict:
         """
         Get all pieces on the board with their positions.
-        
+
         Returns:
             Dictionary mapping square indices to chess.Piece objects
         """
